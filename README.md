@@ -41,11 +41,11 @@ gcloud compute networks subnets list \
 ranges_in_use_file=/tmp/ranges-in-use-${PROJECT_ID}-${NETWORK_NAME}.txt
 
 jq -r '.[]|.secondaryIpRanges[]?|.ipCidrRange' \
-~/tmp/subnets-${PROJECT_ID}-${NETWORK_NAME}.json \
+${subnet_file} \
 > ${ranges_in_use_file}
 
 jq -r '.[]|.ipCidrRange' \
-~/tmp/subnets-${PROJECT_ID}-${NETWORK_NAME}.json \
+${subnet_file} \
 >> ${ranges_in_use_file}
 ```
 
